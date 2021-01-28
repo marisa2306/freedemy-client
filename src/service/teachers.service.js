@@ -1,13 +1,12 @@
-import runtimeEnv from "@mars/heroku-js-runtime-env"
+
 import axios from 'axios'
 
-const env = runtimeEnv()
 
 export default class TeacherService {
 
     constructor() {
         this.apiHandler = axios.create({
-            baseURL: `${ env.REACT_APP_API_URL }/teachers`,
+            baseURL: 'https://freedemy-server.herokuapp.com/api/teachers',
             withCredentials: true
         })
     }

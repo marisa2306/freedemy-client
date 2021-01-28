@@ -1,13 +1,13 @@
-import runtimeEnv from "@mars/heroku-js-runtime-env";
+
 import axios from 'axios'
 
-const env = runtimeEnv()
+
 
 export default class CourseService {
 
     constructor() {
         this.apiHandler = axios.create({
-            baseURL: `${ env.REACT_APP_API_URL }/courses`,
+            baseURL: 'https://freedemy-server.herokuapp.com/api/courses',
             withCredentials: true
         })
     }

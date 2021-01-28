@@ -1,13 +1,12 @@
-import runtimeEnv from "@mars/heroku-js-runtime-env";
+
 import axios from 'axios'
 
-const env = runtimeEnv()
 
 export default class UserService {
 
     constructor() {
         this.apiHandler = axios.create({
-            baseURL: `${env.REACT_APP_API_URL}/users`,
+            baseURL: 'https://freedemy-server.herokuapp.com/api/users',
             withCredentials: true
         })
     }
@@ -16,8 +15,8 @@ export default class UserService {
     deleteUser = userId => this.apiHandler.delete(`/deleteUser/${userId}`)
 
     getUserFavCourses = userId => this.apiHandler.get(`/userFavCourses/${userId}`)
-    updateFavCourses = (userId, favList) => this.apiHandler.put(`/editUser/updateFavCourses/${ userId }`, favList)
-    
+    updateFavCourses = (userId, favList) => this.apiHandler.put(`/editUser/updateFavCourses/${userId}`, favList)
+
     getUserFavTeachers = userId => this.apiHandler.get(`/userFavTeachers/${userId}`)
     updateFavTeachers = (userId, favList) => this.apiHandler.put(`/editUser/updateFavTeachers/${userId}`, favList)
 }
